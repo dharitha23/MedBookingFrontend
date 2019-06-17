@@ -1,0 +1,17 @@
+<h1 mat-dialog-title style="color: #104685">Please rate Dr.{{firstname}} {{lastname}}</h1>
+<mat-dialog-content>
+  <ngb-rating [(rate)]="currentRate" [readonly]="false" max="5">
+    <ng-template let-fill="fill" let-index="index">
+      <span class="star" [class.filled]="fill === 100">&#9733;</span>
+    </ng-template>
+  </ngb-rating>
+  <p><span class="bold-600">Rating:</span> {{currentRate}}</p>
+  <hr>
+  <p class="bold-600">Comments:</p>
+  <textarea matInput class="comments" id="comments" rows="5" cols="50" [(ngModel)]="message"></textarea>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button color="primary" (click)="onOkClick()" [disabled]="message.length === 0 || currentRate === 0" cdkFocusInitial>Ok</button>
+</mat-dialog-actions>

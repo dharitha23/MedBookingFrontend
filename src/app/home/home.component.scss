@@ -1,0 +1,208 @@
+.navbar {
+  background: rgba(16, 70, 133, .5);
+}
+
+.navbar_solid {
+  background: rgb(16, 70, 133);
+}
+
+.nav-link.navbar-brand {
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+.nav-link {
+  /** Added font family **/
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  margin-right: 1em !important;
+}
+
+.nav-link:hover {
+  color: #00B4FF;
+}
+
+.navbar-collapse {
+  justify-content: flex-end;
+}
+
+.navbar-toggler {
+  color: #fff !important;
+}
+
+.navbar.navbar-expand-lg.fixed-top {
+  background: rgba(16, 70, 133, .9);
+
+}
+
+.logo {
+  height: 10px;
+}
+
+
+/** HEADER ON LANDING PAGE **/
+
+.full_page_bg {
+  /** Originally taken from https://www.w3schools.com/howto/howto_css_full_page.asp **/
+  /**Added black overlay to bg image **/
+  background: linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .6)),  url('../../assets/images/landing-page/close-up-doctor-health-42273.jpg');
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.welcome-message {
+  font-family: 'Open Sans', sans-serif;
+  color: #ffffff;
+  text-align: center;
+  position: relative;
+  transform: translateY(50%);
+}
+
+
+@media (min-width: 300px) and (max-width: 767px) {
+  .welcome-message {
+    font-family: 'Open Sans', sans-serif;
+    color: #ffffff;
+    text-align: center;
+    position: relative;
+    transform: translateY(80%);
+  }
+}
+
+@media (min-width: 320px) and (max-width: 320px) {
+  .welcome-message {
+    font-family: 'Open Sans', sans-serif;
+    color: #ffffff;
+    text-align: center;
+    position: relative;
+    transform: translateY(32%);
+  }
+}
+
+/* Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+  .welcome-message {
+    font-family: 'Open Sans', sans-serif;
+    color: #ffffff;
+    text-align: center;
+    position: relative;
+    transform: translateY(50%);
+  }
+}
+
+
+h1 {
+  font-weight: 600;
+}
+
+.btn-primary-customized-dark-blue {
+  background-color: #104685;
+  border: solid 1px #104685;
+  text-transform: none;
+}
+
+.btn-primary-customized-light-green {
+  background-color: #8dc00c;
+  border: solid 1px #8dc00c;
+  text-transform: none;
+}
+
+.btn-outline-secondary-customized-dark-blue {
+  color: #104685;
+  border: solid 1px #104685;
+}
+
+.hamburger-icon {
+  content: "";
+  width: 16px;
+  -webkit-box-shadow: 0 -6px 0 1px, 0 0 0 1px, 0 6px 0 1px;
+  -moz-box-shadow: 0 -6px 0 1px, 0 0 0 1px, 0 6px 0 1px;
+  box-shadow: 0 -6px 0 1px, 0 0 0 1px, 0 6px 0 1px;
+}
+
+/** SECTIONS **/
+
+@media (min-width: 300px) and (max-width: 767px) {
+  /** Took guide from https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_background-size **/
+  .full-page-section {
+    background-color: transparent;
+    height: fit-content;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+/* Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+  /** Took guide from https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_background-size **/
+  .full-page-section {
+    background-color: transparent;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+.page-section-gray {
+  padding: 100px 0 50px 0;
+  background-color: #EEEEEE;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.page-section {
+  padding: 100px 0 50px 0;
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.page-section h1, .page-section-gray h1 {
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  padding: 0 0 50px 0;
+}
+
+img.side-image {
+  width: 100%;
+}
+
+.service {
+  text-align: center;
+}
+
+.service i {
+  font-size: 8em;
+  padding-bottom: 20px;
+}
+
+.service .doctor {
+  color: #104685;
+}
+
+.service .patient {
+  color: #8dc00c;
+}
+
+.service .title {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.service .description {
+  font-size: 14px;
+}
+
+.page-footer{
+  background: rgb(16, 70, 133);
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  margin-bottom: 0px;
+}

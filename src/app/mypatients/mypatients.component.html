@@ -1,0 +1,76 @@
+<head>
+  <link rel="stylesheet" type="text/css" href="../../assets/css/main.css">
+</head>
+<app-docnav></app-docnav>
+
+<section #mainSection class="paddingFromNavbar my-appointments-full-page-section">
+  <div class="container">
+    <div class="my_appointments_page">
+      <div class="row">
+        <div class="col-sm-12 col-md-10 col-lg-10 col-xl-10 offset-md-1 offset-lg-1 offset-xl-1">
+          <div class="row">
+            <!-- Cards with upcoming appointments with cancel-->
+            <fieldset class="fieldset-border col-sm-12">
+              <legend class="legend-border">My patients</legend>
+            </fieldset>
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+
+              <div *ngIf="!finishedDataRetrieval" class="looking-for-results" style="width: 100%; text-align: center;">
+                <!-- https://mdbootstrap.com/docs/angular/components/loaders/ -->
+                <div class="spinner-border text-success" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+                <br>
+                <h5> Retrieving information...</h5>
+              </div>
+              <div *ngIf="finishedDataRetrieval" class="col-sm-12">
+                <div *ngIf="patients.length==0">
+                  <br>
+                  <br>
+                  <h6>There are no patients for now.</h6>
+                </div>
+                <!-- Ref: https://material.angular.io/components/table/overview -->
+                <mat-form-field class="mat-form-field">
+                  <input class="form-control"
+                         matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+                </mat-form-field>
+
+                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                  <ng-container matColumnDef="firstName">
+                    <th mat-header-cell *matHeaderCellDef> First name</th>
+                    <td mat-cell *matCellDef="let patient" (click)="showPatientDetail(patient)"><span class="capitalize">{{patient.firstName}}</span></td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="lastName">
+                    <th mat-header-cell *matHeaderCellDef> Last name</th>
+                    <td mat-cell *matCellDef="let patient" (click)="showPatientDetail(patient)"><span class="capitalize">{{patient.lastName}}</span></td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="email">
+                    <th mat-header-cell *matHeaderCellDef> Email</th>
+                    <td mat-cell *matCellDef="let patient" (click)="showPatientDetail(patient)"> {{patient.email}} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="contactNumber">
+                    <th mat-header-cell *matHeaderCellDef> Phone number</th>
+                    <td mat-cell *matCellDef="let patient" (click)="showPatientDetail(patient)"> {{patient.contactNumber}} </td>
+                  </ng-container>
+
+
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<app-footer></app-footer>
+<!-- Footer -->

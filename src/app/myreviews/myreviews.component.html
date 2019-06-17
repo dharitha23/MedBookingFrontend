@@ -1,0 +1,60 @@
+<head>
+  <link rel="stylesheet" type="text/css" href="../../assets/css/main.css">
+</head>
+<app-docnav></app-docnav>
+
+<section #mainSection class="paddingFromNavbar my-appointments-full-page-section">
+  <div class="container">
+    <div class="my_appointments_page">
+      <div class="row">
+        <div class="col-sm-12 col-md-10 col-lg-10 col-xl-10 offset-md-1 offset-lg-1 offset-xl-1">
+          <div class="row">
+            <!-- Cards with upcoming appointments with cancel-->
+            <fieldset class="fieldset-border col-sm-12">
+              <legend class="legend-border">My reviews</legend>
+            </fieldset>
+            <div class="reviews col-sm-12 col-md-12 col-lg-12 col-xl-12">
+              <div *ngIf="!finishedDataRetrieval" class="looking-for-results" style="width: 100%">
+                <!-- https://mdbootstrap.com/docs/angular/components/loaders/ -->
+                <div class="spinner-border text-success" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+                <br>
+                <h5> Retrieving information...</h5>
+              </div>
+
+              <div *ngIf="finishedDataRetrieval">
+                <div *ngIf="doctor.rating_reviews.length==0">
+                  <br>
+                  <br>
+                  <h6>There are no reviews for now.</h6>
+                </div>
+                <div class="user_review" *ngFor="let review of doctor.rating_reviews">
+                  <p class="rating">
+                    <span class="bold-600">Rated:</span>
+                    <!-- Code taken originally from https://ng-bootstrap.github.io/#/components/rating/examples -->
+                    <ngb-rating [(rate)]="review.stars" [readonly]="true" max="5">
+                      <ng-template let-fill="fill" let-index="index">
+                        <span class="star" [class.filled]="fill === 100">&#9733;</span>
+                      </ng-template>
+                    </ngb-rating>
+                  </p>
+                  <p class="comment">
+                    {{review.message}}
+                  </p>
+                  <span class="author">- {{review.patient_firstname}} {{review.patient_lastname}}</span><br>
+                  <span class="date">{{review.rating_date}}</span><br>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<app-footer></app-footer>
+<!-- Footer -->

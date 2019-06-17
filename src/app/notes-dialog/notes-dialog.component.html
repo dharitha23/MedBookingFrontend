@@ -1,0 +1,17 @@
+<h1 mat-dialog-title style="color: #104685">Appointment notes</h1>
+<mat-dialog-content>
+  <p>
+    <span class="bold-weight">Patient: </span>
+    <span class="light-weight" style="margin-right: 15px">{{patientName}}</span>
+
+    <span class="bold-weight">Appointment date: </span>
+    <span class="light-weight">{{appointmentDate}}</span>
+  </p>
+
+  <textarea matInput [(ngModel)]="description" rows="8"></textarea>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close (click)="close()">Close</button>
+  <button mat-button [mat-dialog-close]="description" cdkFocusInitial [disabled]="description.length === 0" color="primary">Save</button>
+</mat-dialog-actions>

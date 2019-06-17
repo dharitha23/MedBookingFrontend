@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<head>
+  <title>Contact US</title>
+  <link rel="stylesheet" type="text/css" href="../../assets/css/main.css">
+</head>
+<!-- navbar -->
+<app-default-nav [navbar_solid_class]='navbar_solid'></app-default-nav>
+
+
+<form name="contact" [formGroup]="contactForm">
+  <div class="card col-lg-8">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="card-body form">
+          <!-- Heading -->
+          <h3 class="mt-4"><i class="fas fa-envelope pr-2"></i>Get in touch with us:</h3>
+          <div class="row">
+            <!-- Radio buttons-->
+            <div class="col-md-6">
+              <div class="md-form">
+                <div class="custom-control custom-radio custom-control-inline mr-5 ml-4">
+                  <input type="radio" class="custom-control-input" id="radioPatient" name="inlineDefaultRadiosExample" >
+                  <label class="custom-control-label" for="radioPatient">Patient</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline ml-5">
+                  <input type="radio" class="custom-control-input" id="radioDoctor" name="inlineDefaultRadiosExample">
+                  <label class="custom-control-label" for="radioDoctor">Doctor</label>
+                </div>
+              </div>
+            </div>
+
+            <!--Validation guides: https://angular.io/guide/form-validation and https://mdbootstrap.com/docs/angular/forms/validation/ -->
+            <div class="col-md-6">
+              <div class="md-form mb-0">
+                <i class="fas fa-user-circle prefix"></i>
+                <input mdbInputDirective mdbValidate mdb-error="disable" type="text" maxlength="20" formControlName="contactName" id="contact-name" class="form-control"
+                       [ngClass]="{'is-invalid':contactForm.get('contactName').touched && contactForm.get('contactName').invalid}" >
+                <label for="contact-name" class="">Your name*</label>
+                <div class="invalid-feedback">
+                  <div class="errorMessage">Name is required</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="md-form mb-0">
+                <i class="fas fa-envelope prefix"></i>
+                <input mdbInputDirective mdbValidate  mdb-error="disable" type="email" class="form-control" id="contact-email" formControlName="contactEmail" autocomplete="off"
+                [ngClass]="{'is-invalid':contactForm.get('contactEmail').touched && contactForm.get('contactEmail').invalid}">
+                <label for="contact-email" class="">Your Email*</label>
+                <div class="invalid-feedback">
+                  <div class="errorMessage">Valid Email is required (eg: abc@abc.com)</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="md-form mb-0">
+                <i class="fas fa-phone prefix"></i>
+                <input mdbInputDirective mdbValidate  mdb-error="disable" formControlName="contactPhone" type="number" maxLength="10" id="contact-phone" class="form-control"
+                       [ngClass]="{'is-invalid':contactForm.get('contactPhone').touched && contactForm.get('contactPhone').invalid}">
+                <label for="contact-phone" class="">Your phone*</label>
+                <div class="invalid-feedback">
+                  <div class="errorMessage">Phone number is required</div>
+                </div>
+            </div>
+            </div>
+
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="md-form mb-0">
+                <i class="fas fa-pen prefix"></i>
+                <textarea  type="text" id="form-contact-message" class="form-control md-textarea" rows="4" mdbInputDirective ></textarea>
+                <label for="form-contact-message">Your message</label>
+                <button mdbBtn class="submitbtn" type="submit" size="lg" color="cyan"  (click)="confirmation.show()"  mdbWavesEffect>
+                  <i class="far fa-paper-plane"></i>
+                </button>
+
+                <div mdbModal #confirmation="mdbModal" class="modal fade" role="dialog" >
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <button type="button" class="close pull-right" aria-label="Close" (click)="confirmation.hide()"></button>
+                      <div class="modal-body">
+                        Thanks for contacting our team. We will get back to you shortly.
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" mdbBtn color="cyan" class="waves-light" aria-label="Close" (click)="confirmation.hide()" mdbWavesEffect>Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  </div>
+</form>
+
+
+<app-footer></app-footer>

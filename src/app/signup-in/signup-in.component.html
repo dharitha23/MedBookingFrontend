@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MedBooking</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="../../assets/images/favicon16x16.png" sizes="16x16">
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="../../assets/css/main.css">
+</head>
+<body>
+
+<!-- navbar -->
+<app-default-nav [navbar_solid_class]='navbar_solid'></app-default-nav>
+
+<header class="full-page-section">
+  <div class="container margin_from_navbar">
+    <div class="signup_signin signup_signin_text">
+      <div class="row signupMargin">
+        <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10 offset-sm-1  offset-md-1 offset-lg-1 offset-xl-1">
+          <div class="row">
+            <div class="sign-in div-border col-sm-12 col-md-6 col-lg-6 col-xl-6">
+              <p>Already have an account?</p>
+              <h1>Sign in!</h1>
+              <form name="sign-in-form" method="post">
+                <!-- Tooltip example: https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_tooltip_pos&stacked=h -->
+                <!-- Email regex from: https://www.w3resource.com/javascript/form/email-validation.php -->
+                <input id="si-mail" name="email" type="email" placeholder="name@domain.com"
+                       pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+                <p id="signin-mail" class="error-message" aria-live="polite" *ngIf="sign_in_invalid_email">
+                  <i class="fas fa-exclamation-circle"></i> Please enter a valid email address
+                </p>
+
+                <input id="si-password" name="password" type="password" placeholder="Password"
+                       data-toggle="tooltip"
+                       data-placement="right" data-trigger="hover"
+                       title="Must be from 8 to 32 chars. Must contain at least one number."
+                       pattern="(?=.*[0-9])(?=.*[aA-zZ])([a-zA-Z0-9]{8,})" minlength="8" maxlength="32">
+                <!-- Password regex based on
+                https://www.w3schools.com/tags/att_input_pattern.asp
+                https://stackoverflow.com/questions/14850553/javascript-regex-for-password-containing-at-least-8-characters-1-number-1-uppe -->
+                <p id="signin-password" class="error-message" aria-live="polite" *ngIf="sign_in_invalid_password">
+                  <i class="fas fa-exclamation-circle"></i> Password must be from 8 to 32 characters and must contain
+                  at least one number
+                </p>
+                <br>
+                <button class="btn btn-primary-customized-dark-blue" style="color: white" type="submit"
+                        (click)="userLogin()" mdbWavesEffect>Sign in
+                </button>
+                <!--<div class="forgotpassword" style="margin-left: 40%">
+                  <a routerLink="/forgotpass">Forgot password?</a>
+                </div> -->
+              </form>
+
+            </div>
+
+            <div class="sign-up col-sm-12 col-md-6 col-lg-6 col-xl-6">
+              <p>New user?</p>
+              <h1>Sign up!</h1>
+              <form name="sign-up-form" method="post">
+                <span class="introduction">I am a</span>
+                <input type="radio" id="radio-patient" name="usertype" (change)="radioChangeHandler($event)"
+                       value="patient">
+                <label for="radio-patient">Patient</label>
+
+                <input type="radio" id="radio-doctor" name="usertype" (change)="radioChangeHandler($event)"
+                       value="doctor">
+                <label for="radio-doctor">Doctor</label>
+                <div class="radio-error" name="radio-err"></div>
+                <p id="patient_type" class="error-message" aria-live="polite" *ngIf="no_user_type">
+                  <i class="fas fa-exclamation-circle"></i> Please select if you are a patient or doctor
+                </p>
+
+                <input id="signup-mail" name="su-email" type="email" placeholder="name@domain.com"
+                       pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+                <p id="signup-mail-error" class="error-message" aria-live="polite" *ngIf="sign_up_invalid_email">
+                  <i class="fas fa-exclamation-circle"></i> Please enter a valid email address
+                </p>
+
+
+                <input id="su-password" name="su-password" type="password" placeholder="Password"
+                       data-toggle="tooltip"
+                       data-placement="right" data-trigger="hover"
+                       title="Must be from 8 to 32 chars. Must contain at least one number."
+                       pattern="(?=.*[0-9])(?=.*[aA-zZ])([a-zA-Z0-9]{8,})" minlength="8" maxlength="32">
+                <p id="signup-password-error" class="error-message" aria-live="polite" *ngIf="sign_up_invalid_password">
+                  <i class="fas fa-exclamation-circle"></i> Password must be from 8 to 32 characters and must contain at
+                  least one number
+                </p>
+
+
+                <input id="su-confirm-password" name="confirm-password" type="password" placeholder="Confirm password"
+                       data-toggle="tooltip"
+                       data-placement="right" data-trigger="hover"
+                       title="Must be from 8 to 32 chars. Must contain at least one number."
+                       pattern="(?=.*[0-9])(?=.*[aA-zZ])([a-zA-Z0-9]{8,})" minlength="8" maxlength="32">
+                <p id="password-match-error" class="error-message" aria-live="polite" *ngIf="sign_up_invalid_confirm_password">
+                  <i class="fas fa-exclamation-circle"></i> Passwords do not match. Please, try again.
+                </p>
+                <p id="signup-password-conf--error" class="error-message" aria-live="polite" *ngIf="sign_up_invalid_confirmed_password">
+                  <i class="fas fa-exclamation-circle"></i> Password must be from 8 to 32 characters and must contain at
+                  least one number
+                </p>
+
+                <button class="btn btn-primary-customized-dark-blue" (click)="createUser()" type="submit"
+                        style="color: white">Sign up
+                </button>
+              </form>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<app-footer></app-footer>
+
+</body>
+</html>

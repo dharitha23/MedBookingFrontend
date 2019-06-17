@@ -1,0 +1,142 @@
+<head>
+  <link rel="stylesheet" type="text/css" href="../../assets/css/main.css">
+</head>
+<app-docnav></app-docnav>
+
+<section #mainSection class="paddingFromNavbar my-appointments-full-page-section">
+  <div class="container">
+    <div class="my_appointments_page">
+      <div class="row">
+        <div class="col-sm-12 col-md-10 col-lg-10 col-xl-10 offset-md-1 offset-lg-1 offset-xl-1">
+          <div class="row">
+            <!-- Cards with upcoming appointments with cancel-->
+            <fieldset class="fieldset-border col-sm-12">
+              <legend class="legend-border">My appointments</legend>
+            </fieldset>
+            <div *ngIf="!finishedDataRetrieval" class="looking-for-results" style="width: 100%; text-align: center;">
+              <!-- https://mdbootstrap.com/docs/angular/components/loaders/ -->
+              <div class="spinner-border text-success" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+              <br>
+              <h5> Retrieving information...</h5>
+            </div>
+            <div class="full-width" *ngIf="finishedDataRetrieval">
+              <!-- Nav Tabs -->
+              <mat-tab-group mat-stretch-tabs mat-align-tabs="start" color="primary" animationDuration="100ms">
+                <!--https://material.angular.io/components/tabs/overview-->
+                <mat-tab class="tab-label" label="Upcoming">
+                  <div *ngFor="let appointment of upcomingDocAppointments;  let i = index">
+                    <!-- Guide from https://mdbootstrap.com/docs/jquery/components/cards/ -->
+                    <!--Card-->
+                    <mdb-card class="mb-3" bgColor="bg-light">
+                      <!--Card content-->
+                      <mdb-card-body>
+                        <!--Title-->
+                        <mdb-card-title>
+                          <h5>
+                            Appointment with: <span
+                            class="bold_600 capitalize">{{appointment.patientName}} {{appointment.patientLastName}}</span>
+                          </h5>
+                        </mdb-card-title>
+                        <hr>
+                        <!--Text-->
+                        <p class="font-small grey-dark-text mb-0">
+                          <span class="bold_600">Symptoms description: {{appointment.problemDesc}}</span>
+                        </p>
+                      </mdb-card-body>
+                      <!--/.Card content-->
+                      <!-- Card footer -->
+                      <mdb-card-footer class="mdb-color card-footer white-text">
+                        <span class="btn btn-link  btn-md disabled">
+                          <i class="far fa-calendar-alt pr-1"></i>{{appointment.apptDate}}
+                        </span>
+                        <span class="btn btn-link btn-md disabled">
+                          <i class="far fa-clock pr-1"></i>{{appointment.startTimeSlot}}
+                        </span>
+                        <span style="float: right">
+                          <div *ngIf="appointment.appt_status === 'Pending'">
+                            <a class="btn btn-unique waves-light " color="warning" mdbWavesEffect
+                               style="margin-right: 10px;"
+                               (click)='confirmappointment(appointment.Appt_id, i, true)'>Confirm</a>
+                          <a class="btn btn-info waves-light " color="warning"
+                             (click)='deleteAppointment(appointment.Appt_id,i) ' mdbWavesEffect>Cancel</a>
+                          </div>
+                          <div *ngIf="appointment.appt_status !== 'Pending'">
+                            <a class="btn btn-unique waves-light " color="warning" mdbWavesEffect
+                               style="margin-right: 10px;"
+                               (click)="addNotes(appointment.appt_id,appointment.patientName, appointment.apptDate)">
+                               Add notes
+                             </a>
+                             <a class="btn btn-info waves-light " color="warning" mdbWavesEffect
+                                (click)="viewHistory(appointment.patientEmail)">
+                             View history</a>
+                          </div>
+
+
+                        </span>
+                      </mdb-card-footer>
+                      <!-- Card footer -->
+                    </mdb-card>
+                    <br>
+                    <br>
+                    <!-- <h4 class="day">Tomorrow</h4> -->
+                  </div>
+                </mat-tab>
+                <mat-tab class="tab-label" label="Previous">
+                  <div *ngFor="let appointment of previousDocAppointments">
+                    <!-- Guide from https://mdbootstrap.com/docs/jquery/components/cards/ -->
+                    <!--Card-->
+                    <mdb-card class="mb-3" bgColor="bg-light">
+                      <!--Card content-->
+                      <mdb-card-body>
+                        <!--Title-->
+                        <mdb-card-title>
+                          <h5>
+                            Appointment with: <span
+                            class="bold_600 capitalize">{{appointment.patientName}} {{appointment.patientLastName}}</span>
+                          </h5>
+                        </mdb-card-title>
+                        <hr>
+                        <!--Text-->
+                        <p class="font-small grey-dark-text mb-0">
+                          <span class="bold_600">Symptoms description: {{appointment.problemDesc}}</span>
+                        </p>
+                      </mdb-card-body>
+                      <!--/.Card content-->
+                      <!-- Card footer -->
+                      <mdb-card-footer class="mdb-color card-footer white-text">
+                        <span class="btn btn-link  btn-md disabled">
+                          <i class="far fa-calendar-alt pr-1"></i>{{appointment.apptDate}}
+                        </span>
+                        <span class="btn btn-link btn-md disabled">
+                          <i class="far fa-clock pr-1"></i>{{appointment.startTimeSlot}}
+                        </span>
+                        <span style="float: right">
+                          <a class="btn btn-unique waves-light " style="margin-right: 10px;" mdbWavesEffect
+                             (click)="addNotes(appointment.appt_id,appointment.patientName, appointment.apptDate)"
+                          >Add notes</a>
+                          <a class="btn btn-info waves-light " color="warning" mdbWavesEffect
+                             (click)="viewHistory(appointment.patientEmail)">
+                          View history
+                          </a>
+                        </span>
+                      </mdb-card-footer>
+                      <!-- Card footer -->
+                    </mdb-card>
+                    <br>
+                    <br>
+                  </div>
+                </mat-tab>
+              </mat-tab-group>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<app-footer></app-footer>
+<!-- Footer -->

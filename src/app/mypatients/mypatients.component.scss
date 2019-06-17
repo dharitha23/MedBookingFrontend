@@ -1,0 +1,119 @@
+/* Structure */
+table {
+  width: 100%;
+}
+
+.mat-form-field input {
+  font-size: 14px;
+  width: 100%;
+  margin: 15px 0;
+}
+
+.my_appointments_page {
+  margin-top: 8%;
+  margin-bottom: 8%;
+}
+
+.legend-border {
+  text-align: left !important;
+  width: auto;
+  padding: 0 10px;
+  border-bottom: none;
+}
+.fieldset-border {
+  border-top: 2px solid #283593;
+  //height: 10% !important;
+  height: 100%;
+  width: 100%;
+}
+.my-appointments-full-page-section {
+  height: 100%;
+}
+
+.my_appointments_overflow {
+  display: block;
+  overflow: auto;
+}
+
+.bold_600{
+  font-weight: 600;
+}
+
+.mat-tab-group{
+  padding-left: 3%;
+  padding-right: 3%;
+  padding-bottom: 7%;
+  font-family: 'Open Sans', sans-serif;
+}
+.mb-3.previous{
+  width: 85%;
+  margin-left: 12%;
+}
+
+.reschedule{
+  margin-left: 15%;
+}
+
+.fas.fa-calendar-alt{
+  color:black;
+  padding-left: 10px;
+}
+.datepicker{
+  margin-left: 10px;
+}
+.waves-effect.rating{
+  margin-left: 40%;
+}
+
+.page-footer{
+  background: rgb(16, 70, 133);
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  margin-bottom: 0px;
+  padding-bottom: 1.75rem;
+  padding-top: 1.75rem;
+}
+
+.waves-effect.button {
+  display: flex;
+  justify-content: center;
+  margin-left: 30%;
+  margin-right: 30%;
+}
+
+
+.full-width{
+  width: 100%;
+}
+
+
+.card-footer{
+  background-color: #323232 !important;
+}
+
+.btn-link.disabled{
+  color: white !important;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.btn-link:hover{
+  text-decoration: none;
+}
+
+
+.btn{
+  margin:0;
+}
+
+td.mat-cell{
+  cursor: pointer;
+}
+
+th.mat-header-cell{
+  text-align: center;
+  font-size: 15px;
+  color: white;
+  background-color: #323232;
+}

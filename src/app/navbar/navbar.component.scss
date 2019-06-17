@@ -1,0 +1,28 @@
+.no-caret{
+  color: transparent !important;
+}
+.no-caret i{
+  color: white;
+}
+body{
+  background-color: #a0d8d3;
+  padding-bottom: 20px;
+}
+
+span.fas.fa-circle {
+  position: absolute;
+  font-size: 0.5em;
+  top: -4px;
+  color: orangered;
+  right: -4px;
+}
+.fas.fa-bell.fa-2x{
+position: relative;
+cursor: pointer;
+}
+span.num {
+  position: absolute;
+  font-size: 0.4em;
+  top: -3px;
+  color: #fff;
+  right: 3px;}

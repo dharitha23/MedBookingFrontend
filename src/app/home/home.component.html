@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MedBooking</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="" sizes="16x16">
+  <link rel="icon" type="image/png" href="../../assets/images/favicon32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="../../assets/images/favicon64x64.png" sizes="64x64">
+  <!-- CSS -->
+  <link rel="stylesheet" href="../../assets/bootstrap-4.2.1-dist/css/bootstrap.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="../../assets/css/main.css">
+</head>
+<body>
+
+<!-- navbar -->
+<app-default-nav *ngIf="!isloggedIn else loginNavBar"></app-default-nav>
+<ng-template #loginNavBar>
+  <app-navbar *ngIf="userType === 'patient'"></app-navbar>
+  <app-docnav *ngIf="userType === 'doctor'"></app-docnav>
+</ng-template>
+
+<div class="full_page_bg">
+  <div class="container center-vertically">
+    <div class="welcome-message">
+      <h1> Welcome to MedBooking!</h1>
+      <h2>We make booking doctor appointments easy.</h2>
+      <br>
+      <a (click)="scroll(patients)" class="btn btn-primary-customized-light-green btn-lg" role="button">I'm a
+        patient</a>
+      <a (click)="scroll(doctors)" class=" btn btn-primary-customized-dark-blue btn-lg" role="button">I'm a doctor</a>
+    </div>
+  </div>
+</div>
+
+<section #patients class="page-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <h1> Services for Patients</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <div class="row">
+          <div class="service col-sm-12 col-md-4 col-lg-4 col-xl-4">
+            <i class="patient far fa-calendar-alt" routerLink="/signupin"></i>
+            <p class="patient title" routerLink="/signupin">Book appointments</p>
+            <p class="description">Book appointments with a doctor you know or find a new one!</p>
+          </div>
+
+          <div class="service col-sm-12 col-md-4 col-lg-4 col-xl-4">
+            <i class="patient fas fa-star" routerLink="/signupin"></i>
+            <p class="patient title" routerLink="/signupin">Rate doctors</p>
+            <p class="description">You can rate a doctor by their service and find out what others have to
+              say about them</p>
+          </div>
+          <div class="service col-sm-12 col-md-4 col-lg-4 col-xl-4">
+            <i class="patient fas fa-search" routerLink="/signupin"></i>
+            <p class="patient title" routerLink="/signupin">Search doctors</p>
+            <p class="description">You can search doctors near to you or by name, speciality, etc.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</section>
+<section #doctors class="page-section-gray">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <h1> Services for Doctors</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <div class="row">
+          <div class="service col-sm-12 col-md-4 col-lg-4 col-xl-4">
+            <i class="doctor fas fa-users" routerLink="/signupin"></i>
+            <p class="doctor title" routerLink="/signupin">Reach a wider audience</p>
+            <p class="description">Expand your reach and get new patients in the area!</p>
+          </div>
+          <div class="service col-sm-12 col-md-4 col-lg-4 col-xl-4">
+            <i class="doctor far fa-calendar-alt" routerLink="/signupin"></i>
+            <p class="doctor title" routerLink="/signupin">Appointment requests</p>
+            <p class="description">Receive appointment requests from new patients</p>
+          </div>
+
+          <div class="service col-sm-12 col-md-4 col-lg-4 col-xl-4">
+            <i class="doctor fas fa-book-open" routerLink="/signupin"></i>
+            <p class="doctor title" routerLink="/signupin">Patient logbook</p>
+            <p class="description">See your list of patients and log their visits for easier following.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<div class="mt-85">
+  <!-- Footer -->
+  <app-footer></app-footer>
+  <!-- Footer -->
+</div>
+
+<script src='../../assets/js/jquery.min.js'></script>
+<script src="../../assets/bootstrap-4.2.1-dist/js/bootstrap.js"></script>
+<script src='../../assets/js/main.js'></script>
+</body>
+
+</html>

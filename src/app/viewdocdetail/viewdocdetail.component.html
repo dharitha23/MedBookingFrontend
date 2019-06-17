@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MedBooking</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="assets/images/favicon16x16.png" sizes="16x16">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/bootstrap-4.2.1-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+</head>
+<body>
+    <app-navbar></app-navbar>
+<section>
+    <div class="container topMarginFromNavBar">
+        <div class="doctor_result_page">
+            <div class="row">
+                <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8 offset-md-2 offset-lg-2 offset-xl-2">
+                    <div class="row">
+                        <div id="doctor_result_profile_pic"
+                             class="doctor_result_profile_pic col-sm-12 col-md-4 col-lg-3 col-xl-3">
+                        </div>
+                        <div class="col-sm-12 col-md-8 col-lg-9 col-xl-9">
+                            <h2>Dr. Jonathan Doe</h2>
+                            <span class="speciality">Dentist</span> <span class="address"><a href="#">1345 South Park Street</a></span>
+                            <div class="rating">
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star-half-alt filled"></i>
+                                <i class="far fa-star"></i>
+                                <span> 123 reviews</span>
+                                <div class="buttons">
+                                    <button class="btn btn-primary btn-primary-customized-dark-blue" type="button"
+                                    routerLink="/confirmappointment">Book appointment
+                                    </button>
+                                    <button class="btn btn-success btn-primary-customized-light-green" type="button"
+                                            onclick="">Rate doctor
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="reviews col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <h5><span class="bold-600"> Dr. Jonathan Doe</span> ratings</h5>
+                            <div class="user_review">
+                                <p class="rating">
+                                    <span class="bold-600">Rated:</span>
+                                    <span>
+                                        <i class="fas fa-star filled"></i>
+                                        <i class="fas fa-star filled"></i>
+                                        <i class="fas fa-star filled"></i>
+                                        <i class="fas fa-star-half-alt filled"></i>
+                                        <i class="far fa-star"></i>
+                                    </span>
+                                </p>
+                                <p class="comment">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse feugiat
+                                    vulputate tellus eget imperdiet. Maecenas imperdiet volutpat felis. Nunc id arcu at
+                                    nisl suscipit maximus. Suspendisse potenti. Vestibulum mi lorem, ornare vel urna
+                                    eget, aliquam dapibus est. Praesent posuere metus erat, eu laoreet nisi imperdiet
+                                    sed. Suspendisse mattis pharetra aliquet. Proin vestibulum ullamcorper ullamcorper.
+                                    Mauris posuere non orci vitae ultrices. Phasellus varius sed nulla id dignissim.
+                                    Suspendisse blandit dolor leo, ut egestas lacus sollicitudin in. Quisque ac bibendum
+                                    orci, quis egestas lorem. Donec suscipit felis ac erat congue aliquam.
+                                </p>
+                                <span class="author">- Anne Johnson</span><br>
+                                <span class="date">06/Feb/2019</span><br>
+                            </div>
+
+                            <div class="user_review">
+                                <p class="rating">
+                                    <span class="bold-600">Rated:</span>
+                                    <span>
+                                        <i class="fas fa-star filled"></i>
+                                        <i class="fas fa-star filled"></i>
+                                        <i class="fas fa-star filled"></i>
+                                        <i class="fas fa-star-half-alt filled"></i>
+                                        <i class="far fa-star"></i>
+                                    </span>
+                                </p>
+                                <p class="comment">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse feugiat
+                                    vulputate tellus eget imperdiet. Maecenas imperdiet volutpat felis. Nunc id arcu at
+                                    nisl suscipit maximus. Suspendisse potenti. Vestibulum mi lorem, ornare vel urna
+                                    eget, aliquam dapibus est. Praesent posuere metus erat, eu laoreet nisi imperdiet
+                                    sed. Suspendisse mattis pharetra aliquet. Proin vestibulum ullamcorper ullamcorper.
+                                    Mauris posuere non orci vitae ultrices. Phasellus varius sed nulla id dignissim.
+                                    Suspendisse blandit dolor leo, ut egestas lacus sollicitudin in. Quisque ac bibendum
+                                    orci, quis egestas lorem. Donec suscipit felis ac erat congue aliquam.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+</section>
+
+<footer class="" id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                <h6><i class="fas fa-sitemap"></i> Sitemap</h6>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="signupin.html">Sign up/Sign in</a></li>
+                    <li><a href="#">My account</a></li>
+                    <li><a href="#">Book an appointment</a></li>
+                    <li><a href="search.html">Search a Doctor</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                <h6><i class="fas fa-envelope"></i> Contact us</h6>
+                <p>
+                    For any inquires, questions or suggestions you can contact us
+                    at <a href="mailto:hello@medbooking.com">hello@medbooking.com</a>.
+                    <!-- extracted from: https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_link_mailto -->
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src='assets/js/jquery.min.js'></script>
+<script src="assets/bootstrap-4.2.1-dist/js/bootstrap.js"></script>
+<script src='assets/js/main.js'></script>
+
+</body>
+</html>
+

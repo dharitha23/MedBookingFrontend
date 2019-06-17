@@ -1,0 +1,95 @@
+<head>
+  <link rel="stylesheet" type="text/css" href="../../assets/css/main.css">
+</head>
+<app-navbar></app-navbar>
+
+<section class="paddingFromNavbar">
+  <div class="container">
+    <div class="my_profile_page">
+      <div class="row">
+        <div class="col-sm-12 col-md-10 col-lg-10 col-xl-10 offset-md-1 offset-lg-1 offset-xl-1">
+          <div class="row">
+            <fieldset class="fieldset-border col-sm-12">
+              <legend class="legend-border">My profile</legend>
+            </fieldset>
+            <div class="col-sm-12 col-md-10 col-lg-10 col-xl-10 offset-md-1 offset-lg-1 offset-xl-1 personal-info">
+      <form class="border border-light p-5" role="form" [formGroup]="updateForm">
+                <button mdbBtn class="btn-unique" id="button1" (click)="enable()" style="float: right"
+                        [disabled]="!disableButtons"><i class="far fa-edit"></i> Edit
+                </button>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">First name:</label>
+            <div class="col-lg-8">
+              <input class="form-control" type="text" required formControlName="firstName" name="firstName">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Last name:</label>
+            <div class="col-lg-8">
+              <input class="form-control" type="text" formControlName="lastName" name="lastName">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Email:</label>
+            <div class="col-lg-8">
+              <input class="form-control" type="email" formControlName="email" name="email">
+            </div>
+          </div>
+          <div class="form-group">
+          <label class="col-md-3 control-label">Birthday:</label>
+            <div class="col-md-8">
+              <input class="form-control" type="date" formControlName="birthday" name="birthday" placeholder="yyyy-mm-dd">
+            </div>
+          </div>
+          <div class="form-group">
+                  <label class="col-md-3 control-label">Mobile:</label>
+                    <div class="col-md-8">
+                      <input class="form-control" type="text" formControlName="mobile" name="mobile">
+          </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label">New Password:</label>
+            <div class="col-md-8">
+              <input class="form-control" type="password" minlength="8" formControlName="password" name="password">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-5 control-label">Confirm New password:</label>
+            <div class="col-md-8">
+              <input class="form-control" type="password" minlength="8" formControlName="confirmPassword" name="confirmPassword">
+            </div>
+          </div>                
+         <div class="form-group">
+          <label class="col-md-3 control-label"></label>
+          <div class="col-md-12" style="text-align: right;">
+            <button mdbBtn class="btn btn-success" [disabled]="disableButtons" (click)="submit()" (submit)="save.show()" routerLink="/bookappointment">
+              Save changes
+            </button>
+            <div mdbModal #save="mdbModal" class="modal fade" role="dialog">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <button type="button" class="close pull-right" (click)="save.hide()"></button>
+                  <div class="modal-body">
+                    Changes has been updated successfully
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" mdbBtn color="default" class="waves-light" (click)="save.hide()"
+                            mdbWavesEffect>Close
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <span></span>
+            <input type="button" class="btn btn-default" [disabled]="disableButtons" (click)="cancel()" value="Cancel">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<app-footer></app-footer>

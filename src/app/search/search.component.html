@@ -1,0 +1,132 @@
+<head>
+  <meta charset="UTF-8">
+  <title>MedBooking</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- CSS -->
+  <link rel="stylesheet" href="../../assets/bootstrap-4.2.1-dist/css/bootstrap.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="../../assets/css/main.css">
+</head>
+<header #header class="paddingFromNavbar">
+  <div class="container">
+    <div class="search_page">
+      <div class="row">
+        <div class="col-sm-12 col-md-10 col-lg-10 col-xl-10 offset-md-1 offset-lg-1 offset-xl-1">
+          <div class="row">
+            <div class="search col-sm-12 col-md-12 col-lg-12 col-xl-12">
+              <!-- <form name="search-form" onsubmit="return validateSearchForm()" method="post"> -->
+              <form name="search-form" [formGroup]="searchForm" (ngSubmit)="onSubmit()" method="post">
+                <input #address id="address" name="address" type="text" class="address" formControlName="address"
+                       placeholder="Enter city name e.g. Halifax">
+                <button id="detect" class="btn" type="button"
+                        (click)="detectLocation()"><i class="material-icons">gps_fixed</i>
+                </button>
+                <select class="speciality" name="speciality" formControlName="speciality">
+                  <!-- took the disable selected value idea from https://stackoverflow.com/questions/8605516/default-select-option-as-blank -->
+                  <option disabled selected value> -- select a speciality --</option>
+                  <option value="any"> Any</option>
+                  <option value="dentist">Dentist</option>
+                  <option value="cardiologist">Cardiologist</option>
+                  <option value="oncologist">Oncologist</option>
+                  <option value="dermatologist">Dermatologist</option>
+                  <option value="neurologists">Neurologist</option>
+                  <option value="gynecologists">Gynecologist</option>
+                  <option value="pediatricians">Pediatrician</option>
+                  <option value="psychiatrists">Psychiatrist</option>
+                </select>
+                <input id="search-text" type="text" class="" placeholder="Enter doctor's name"
+                       formControlName="search_text"
+                       pattern="^[_A-z]*((-|\s)*[_A-z])*$">
+                <!-- Pattern based on https://www.regextester.com/93960-->
+                <span class="search_text_btn_div">
+                  <button id="search_text_btn" name="search-text-btn"
+                          class="btn btn-primary btn-primary-customized-dark-blue btn-sm" type="submit">
+                    <span>Search</span><i class="material-icons">search</i>
+                  </button>
+
+                </span>
+              </form>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+              <span id="search-error" *ngIf="search_error" class="error-msg" aria-live="polite" style="width: 100%">
+                  <i class="fas fa-exclamation-circle"></i> All the search fields are empty. Please fill one or more of the fields above.
+              </span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="results_for col-sm-12 col-md-12 col-lg-12 col-xl-12">
+              <h5><span class="bold_600"> Search results for: </span>
+                <span *ngIf="searchForm.value.address"> {{searchForm.value.address}} |</span>
+                <span class="capitalize" *ngIf="searchForm.value.speciality"> {{searchForm.value.speciality}} |</span>
+                <span *ngIf="searchForm.value.search_text"> {{searchForm.value.search_text}}</span>
+              </h5>
+
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+              <div *ngIf="search_in_process" class="looking-for-results">
+                <!-- https://mdbootstrap.com/docs/angular/components/loaders/ -->
+                <div class="spinner-border text-success" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+                <br>
+                <h6> Looking for results ... </h6>
+              </div>
+              <h6 *ngIf="no_results" class="no-results"> Sorry! We could not find results matching your search. <br>
+                Please, try another search :)</h6>
+            </div>
+          </div>
+          <div *ngIf="!search_in_process" class="row reviews">
+            <div *ngFor="let doctor of doctors" class="search_result col-sm-12 col-md-12 col-lg-12 col-xl-12">
+              <div class="row">
+                <div id="doctor_result_profile_pic"
+                     class="doctor_result_profile_pic col-sm-12 col-md-2 col-lg-2 col-xl-2"
+                     [ngStyle]="setDoctorProfilePicture(doctor.profile_pic_path)">
+                </div>
+                <div class="col-sm-6 col-md-5 col-lg-5 col-xl-5">
+                  <!-- <div class="hidden">{{doctor.id}}</div> -->
+                  <h2><a class="doctor_name"
+                         (click)="showDoctorInfo(doctor)"> {{doctor.firstName}} {{doctor.lastName}} </a>
+                  </h2>
+                  <span class="speciality capitalize">{{doctor.speciality}}</span>
+                  <span class="address">
+                    <a href="https://www.google.com/maps/search/?api=1&query={{doctor.latitude}},{{doctor.longitude}}">
+                    {{doctor.address}}
+                    </a>
+                  </span>
+                  <div class="rating">
+                    <!-- Code taken originally from https://ng-bootstrap.github.io/#/components/rating/examples -->
+                    <ngb-rating [(rate)]="doctor.stars_avg" [readonly]="true" max="5" *ngIf="doctor.total_ratings>0">
+                      <ng-template let-fill="fill" let-index="index">
+                        <span class="star" [class.filled]="fill === 100">&#9733;</span>
+                      </ng-template>
+                    </ngb-rating>
+                    <span> {{doctor.total_ratings}} reviews</span>
+                  </div>
+                </div>
+                <div class=" col-sm-4 col-md-5 col-lg-5 col-xl-5" style="text-align: right">
+                  <div class="buttons">
+                    <button class="btn btn-primary btn-primary-customized-dark-blue btn-md"
+                            type="button"
+                            (click)="confirmBooking(doctor)">Book appointment
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+

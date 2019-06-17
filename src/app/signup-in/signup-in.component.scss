@@ -1,0 +1,86 @@
+/** SIGN UP / SIGN IN **/
+
+.container.margin_from_navbar.center-vertically {
+  font-family: 'Open Sans', sans-serif;
+  color: #ffffff;
+  text-align: center;
+  margin-top: 10%;
+  margin-bottom: 5%;
+  /* changed from width/height to max-width/max-height to aid responsiveness*/
+  max-width: 100%;
+  max-height: 100px;
+}
+
+.signup_signin_text {
+  color: #000;
+  text-align: left;
+}
+
+.sign_up {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #EEEEEE;
+  padding: 50px 0 50px 50px;
+}
+
+.sign-up span.introduction {
+  margin-right: 10px;
+  font-weight: 600;
+}
+
+.sign-up input[type=radio] {
+  margin-bottom: 15px;
+}
+
+
+.sign-up label {
+  font-weight: 600;
+}
+
+
+.sign-in {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #EEEEEE;
+  padding: 50px 0 50px 50px;
+}
+
+@media (min-width: 300px) and (max-width: 767px) {
+  .div-border {
+    border-bottom: solid 3px #8dc00c;
+  }
+}
+
+/* Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+  .div-border {
+    border-right: solid 3px #8dc00c;
+  }
+}
+
+
+.sign-in h1, .sign-up h1 {
+  color: #8dc00c;
+  margin-top: -15px;
+  margin-bottom: 25px;
+}
+
+
+.page-footer{
+  background: rgb(16, 70, 133);
+}
+
+.forgotpassword{
+  text-align:center;
+  color: black;
+
+}
+.signupMargin{
+margin-top: 10%;
+}
+
+.error-message {
+  font-size: 80%;
+  color: #900;
+  margin-bottom: 5px;
+  position: relative;
+  top: 0px;
+}

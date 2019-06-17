@@ -1,0 +1,57 @@
+.appointment_page {
+  margin-top: 8%;
+  margin-bottom: 8%;
+  font-weight: 600;
+}
+
+.border-slot{
+  border-top: 2px solid #104685;
+  color: #FFFFFF;
+}
+
+.btn{
+  text-transform: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.bg-slot{
+  background-color: #104685;
+}
+
+.fieldset-border {
+  border-top: 2px solid #283593;
+  //height: 10% !important;
+  height: 100%;
+  width: 100%;
+}
+
+legend.legend-border {
+  text-align: left !important;
+  width: auto;
+  padding: 0 10px;
+  border-bottom: none;
+}
+
+.topMarginFromNavBar {
+  margin-top: 7%;
+}
+
+.disabledcolor {
+  background-color: red;
+}
+
+.label {
+  color: #283593 !important
+}
+
+
+.btn-info.disabled, .btn-info:disabled{
+  background-color: gray !important;
+  border-color: gray;
+}
+
+
+.button:hover {
+  filter: brightness(85%);
+}

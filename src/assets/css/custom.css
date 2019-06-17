@@ -1,0 +1,186 @@
+
+body {
+    background: #333;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    color: black;
+    line-height: 50px;
+    text-align: center;
+}
+
+
+h4, h3, h5 {
+    color : #f5f5f5;
+}
+
+
+.align-center, .center {
+    text-align: center!important;
+}
+
+.table-values {
+    display: table;
+    width: 98%;
+    margin: 0 auto
+}
+
+.left-column {
+    display: table-row
+}
+
+.gap {
+    padding-top: 70px;
+}
+
+.name,
+.value {
+    display: table-cell;
+    border-top: 1px dotted #D5E4F1;
+    color: #f5f5f5;
+}
+
+.name {
+    text-align: left;
+    padding: 6px 10px 6px 4px;
+    font-weight: 400;
+    background-color: transparent;
+    width: 200px;
+    vertical-align: middle
+}
+
+.value {
+    padding: 6px 200px 6px 6px;
+}
+
+.value>span+span:before {
+    display: inline;
+    content: ",";
+    margin-left: 1px;
+    margin-right: 3px;
+    color: #f5f5f5;
+    border-bottom: 1px solid #FFF
+}
+
+
+.left-column:first-child .name,
+.left-column:first-child .value {
+    border-top: none
+
+}
+
+.striped .value {
+    padding-left: 10px;
+}
+
+.image {
+    border: 1px solid #CCC;
+    background-color: #FFF;
+    padding: 4px;
+    display: inline-block;
+    max-width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.white {
+    color : #f5f5f5;
+    font-size: 15px;
+}
+
+#border-display
+{
+    border-right : 1px dotted #D5E4F1;
+}
+
+/***** Top content *****/
+
+.top-content {
+    padding: 60px 0 80px 0;
+}
+
+.social-login { margin-top: 35px; color: #fff; }
+.social-login-buttons { margin-top: 20px; }
+
+/***** Footer *****/
+
+footer { padding-bottom: 70px; color: #fff; }
+
+footer .footer-border {
+    width: 200px;
+    margin: 0 auto;
+    padding-bottom: 30px;
+    border-top: 1px solid #fff;
+}
+
+
+
+input[type="text"],
+input[type="password"]
+{
+    height: 44px;
+    margin: 0;
+    padding: 0 15px;
+    vertical-align: middle;
+    background: #fff;
+    border: 3px solid #fff;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 44px;
+    color: #888;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus{
+    outline: 0;
+    background: #fff;
+    border: 3px solid #bbb;
+
+}
+
+
+.fa-lock {
+    color: black;
+}
+
+
+button.btn {
+    height: 44px;
+    margin: 0;
+    padding: 0 40px;
+    vertical-align: middle;
+    background: #42c5ea;
+    border: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 44px;
+    color: #fff;
+}
+
+button.btn:hover { color: #fff; }
+
+button.btn:active { outline: 0;  color: #fff; }
+
+button.btn:focus { outline: 0; background: #42c5ea; color: #fff; }
+
+button.btn:active:focus, button.btn.active:focus { outline: 0;  background: #42c5ea; color: #fff; }
+
+@media screen and (max-width: 1000px) {
+    .container {
+        padding-top: 50%;
+    }
+
+    }
+
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : portrait) { .container {
+    padding-top: 0%;
+} }
+
+
+
+

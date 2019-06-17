@@ -1,0 +1,44 @@
+.container{
+    padding-bottom: 20px;
+    margin-top: 6%;
+  }
+  
+  .page-footer{
+    background: rgb(16, 70, 133);
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin-bottom: 0px;
+    padding-top: 1.75em;
+    padding-bottom: 1.75em;
+  }
+  
+  .border-light {
+    background: #edeff2;
+  }
+
+  #button1 {
+    // left: 5%;
+    margin-left: 70%;
+    text-align: right;
+  }
+
+
+.my_profile_page {
+  margin-top: 8%;
+  margin-bottom: 8%;
+  font-weight: 600;
+}
+
+.legend-border {
+  text-align: left !important;
+  width: auto;
+  padding: 0 10px;
+  border-bottom: none;
+}
+.fieldset-border {
+  border-top: 2px solid #283593;
+  //height: 10% !important;
+  height: 100%;
+  width: 100%;
+}

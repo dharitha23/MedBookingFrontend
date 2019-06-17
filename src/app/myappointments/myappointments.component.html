@@ -1,0 +1,122 @@
+<head>
+  <link rel="stylesheet" type="text/css" href="../../assets/css/main.css">
+</head>
+<app-navbar></app-navbar>
+
+
+<section #mainSection class="paddingFromNavbar my-appointments-full-page-section">
+  <div class="container">
+    <div class="my_appointments_page">
+      <div class="row">
+        <div class="col-sm-12 col-md-10 col-lg-10 col-xl-10 offset-md-1 offset-lg-1 offset-xl-1">
+          <div class="row">
+            <!-- Cards with upcoming appointments with cancel-->
+            <fieldset class="fieldset-border col-sm-12">
+              <legend class="legend-border">My appointments</legend>
+            </fieldset>
+            <div *ngIf="!finishedDataRetrieval" class="looking-for-results" style="width: 100%; text-align: center;">
+              <!-- https://mdbootstrap.com/docs/angular/components/loaders/ -->
+              <div class="spinner-border text-success" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+              <br>
+              <h5> Retrieving information...</h5>
+            </div>
+            <div class="full-width" *ngIf="finishedDataRetrieval">
+              <!-- Nav Tabs -->
+              <mat-tab-group mat-stretch-tabs mat-align-tabs="start" color="primary" animationDuration="100ms">
+                <!--https://material.angular.io/components/tabs/overview-->
+                <mat-tab class="tab-label" label="Upcoming">
+                  <div *ngFor="let appointment of upcomingAppointments; let i = index">
+                    <!-- Guide from https://mdbootstrap.com/docs/jquery/components/cards/ -->
+                    <!--Card-->
+                    <mdb-card class="mb-3" bgColor="bg-light">
+                      <!--Card content-->
+                      <mdb-card-body>
+                        <!--Title-->
+                        <mdb-card-title>
+                          <h5>
+                            Appointment with: <span
+                            class="bold_600 capitalize">Dr. {{appointment.firstname}} {{appointment.lastname}}</span>
+                          </h5>
+                        </mdb-card-title>
+                        <hr>
+                        <!--Text-->
+                        <p class="font-small grey-dark-text mb-0">
+                          <span class="bold_600">Symptoms description:</span> {{appointment.problemdesc}}
+                        </p>
+                      </mdb-card-body>
+                      <!--/.Card content-->
+                      <!-- Card footer -->
+                      <mdb-card-footer class="mdb-color card-footer white-text">
+                        <span class="btn btn-link  btn-md disabled">
+                          <i class="far fa-calendar-alt pr-1"></i>{{appointment.appt_date}}
+                        </span>
+                        <span class="btn btn-link btn-md disabled">
+                          <i class="far fa-clock pr-1"></i>{{appointment.appt_time}}
+                        </span>
+                        <span class="btn btn-link btn-md disabled">
+                          <i class="fas fa-door-open" *ngIf="appointment.appt_status === 'confirmed'"></i>
+                          <i class="fas fa-door-closed" *ngIf="appointment.appt_status === 'Pending'"></i>
+                          {{appointment.appt_status}}
+                        </span>
+                        <span style="float: right">
+                          <a class="btn btn-unique waves-light " color="warning" mdbWavesEffect
+                             (click)="deleteAppointment(appointment.appointment_id,i)">Cancel</a>
+                        </span>
+                      </mdb-card-footer>
+                      <!-- Card footer -->
+                    </mdb-card>
+                    <!--/.Card-->
+                  </div>
+                </mat-tab>
+                <mat-tab class="tab-label" label="Previous">
+                  <div *ngFor="let appointment of previousAppointments">
+                    <!--Card-->
+                    <mdb-card class="mb-3" bgColor="bg-light">
+                      <!--Card content-->
+                      <mdb-card-body>
+                        <!--Title-->
+                        <mdb-card-title>
+                          <h5>
+                            Appointment with: <span
+                            class="bold_600 capitalize">Dr. {{appointment.firstname}} {{appointment.lastname}}</span>
+                          </h5>
+                        </mdb-card-title>
+                        <hr>
+                        <!--Text-->
+                        <p class="font-small grey-dark-text mb-0">
+                          <span class="bold_600">Symptoms description:</span> {{appointment.problemdesc}}
+                        </p>
+                      </mdb-card-body>
+                      <!--/.Card content-->
+                      <!-- Card footer -->
+                      <mdb-card-footer class="mdb-color card-footer white-text">
+                        <span class="btn btn-link disabled">
+                          <i class="far fa-calendar-alt pr-1"></i>{{appointment.appt_date}}
+                        </span>
+                        <span class="btn btn-link disabled">
+                          <i class="far fa-clock pr-1"></i>{{appointment.appt_time}}
+                        </span>
+                        <span style="float: right">
+                          <a class="btn btn-primary-customized-light-green waves-light" mdbWavesEffect
+                             (click)="openRatingDialog(appointment.doctor_id, appointment.firstname, appointment.lastname)">Rate doctor</a>
+                        </span>
+                      </mdb-card-footer>
+                      <!-- Card footer -->
+                    </mdb-card>
+                    <!--/Card-->
+                  </div>
+                </mat-tab>
+              </mat-tab-group>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<app-footer></app-footer>
+<!-- Footer -->

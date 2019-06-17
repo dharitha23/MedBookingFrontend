@@ -1,0 +1,86 @@
+<head>
+  <link rel="stylesheet" type="text/css" href="../../assets/css/main.css">
+</head>
+<app-docnav></app-docnav>
+
+<section #mainSection class="paddingFromNavbar my-appointments-full-page-section">
+  <div class="container">
+    <div class="my_appointments_page">
+      <div class="row">
+        <div class="col-sm-12 col-md-10 col-lg-10 col-xl-10 offset-md-1 offset-lg-1 offset-xl-1">
+          <div class="row">
+            <!-- Cards with upcoming appointments with cancel-->
+            <form [formGroup]="availabilityForm" class="col-sm-12">
+              <div class="col-sm-12">
+                <fieldset class="fieldset-border col-sm-12">
+                  <legend class="legend-border">Availability</legend>
+
+                  <div class="form-group row mt-3">
+                    <p class="col-sm-12">Please select the dates and your available hours during these dates.</p>
+                    <div class="col-sm-1">
+                      <label for="startDate" class="pt-2">
+                        From<span class="required">*</span></label>
+                    </div>
+                    <div class="col-sm-5 mb-2">
+                      <input type="date" id="startDate" name="appointmentDate" min="{{today}}"
+                             formControlName="startDate"
+                             class="form-control" required/>
+                    </div>
+                    <div class="col-sm-1">
+                      <label for="endDate" class="pt-2">
+                        To<span class="required">*</span></label>
+                    </div>
+                    <div class="col-sm-5 mb-2">
+                      <input type="date" id="endDate" name="endDate" min="{{today}}"
+                             formControlName="endDate"
+                             class="form-control" required/>
+                    </div>
+                  </div>
+
+                  <div class="form-group row mt-3">
+                    <div class="col-sm-1">
+                      <label for="startDate" class="pt-2">
+                        From<span class="required">*</span></label>
+                    </div>
+                    <div class="col-sm-5 mb-2">
+                      <!-- Ref: https://www.w3schools.com/jsref/dom_obj_input_time.asp -->
+                      <input type="time" id="startTime" name="startTime" value="{{commonStartTime}}"
+                             formControlName="startTime"
+                             class="form-control" required/>
+                    </div>
+                    <div class="col-sm-1">
+                      <label for="endDate" class="pt-2">
+                        To<span class="required">*</span></label>
+                    </div>
+                    <div class="col-sm-5 mb-2">
+                      <input type="time" id="endTime" name="endTime" value="{{commonEndTime}}"
+                             formControlName="endTime"
+                             class="form-control" required/>
+                    </div>
+                  </div>
+
+                  <div class="row" style="float: right;">
+                    <div class="col-sm-12">
+                      <button id="btnConfirmAppointment" [disabled]="availabilityForm.invalid"
+                              class="btn btn-primary-customized-light-green btn-md btn-success mt-3 mb-2">
+                        Save
+                      </button>
+                      <button id="btnCancel" routerLink="/docmyappointments"
+                              class="btn btn-primary-customized-dark-blue btn-info btn-md mt-3 mb-2">
+                        Cancel
+                      </button>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<app-footer></app-footer>
+<!-- Footer -->

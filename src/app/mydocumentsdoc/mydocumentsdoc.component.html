@@ -1,0 +1,48 @@
+
+<app-docnav></app-docnav>
+<body>
+<div class="flex-container topMarginFromNavBar">
+<div class="heading"><h4>Upload Documents</h4></div>
+<form class="form" autocomplete="on">
+		<label for="number">Appointment Number:</label>
+		<input type="text" placeholder="Example: 100" id="number" required>
+		<label for="doc-name">Document Name:</label>
+		<input type="text" placeholder="Example: Blood Test" id="doc-name" required>
+		<label for="type">Type of Document:</label>
+		<select id="type" class="menu">
+			<option>Lab report</option>
+			<option>Prescription</option>
+		</select>
+		<label for="info">Additional info:</label>
+		<textarea id="info" rows="4" cols="50" required></textarea>
+		<label for="file">Upload File:</label>
+		<input type="File" id="file" required>
+		<button id="submit">Upload</button>
+</form>
+<div class="display">
+	<div class="heading"><h4>View uploaded Documents</h4></div> 
+	<div id="doc">
+	<div class="doc1">
+		<div class="zero-child">Appointment Number</div>
+		<div class="first-child">Blood Test</div>
+		<div class="second-child"><a href="#">Lab report</a></div>
+		<div class="third-child"><a href="#">Doctor's comments</a></div>
+		<div class="fourth-child">January 10, 2019</div>
+	</div>
+	<br>
+	<div class="doc2">
+		<div class="zero-child">Appointment Number</div>
+		<div class="first-child">Diarrhoea Treatment</div>
+		<div class="second-child"><a href="#">Prescription</a></div>
+		<div class="third-child"><a href="#">Doctor's comments</a></div>
+		<div class="fourth-child">January 10, 2019</div>
+	</div>
+	</div>
+</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script src="../js/Doc_documents.js"></script> 
+</body>	

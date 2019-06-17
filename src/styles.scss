@@ -1,0 +1,26 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~ngx-toastr/toastr.css';
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:600');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:800');
+
+/** Taken from https://mdbootstrap.com/support/angular/full-page-intro-with-fixed-transparent-navbar-when-scroll-wont-change-color/ **/
+.top-nav-collapse {
+  background-color: rgb(16, 70, 133);
+}
+
+/** Taken from https://stackoverflow.com/questions/10336194/twitter-bootstrap-top-nav-bar-blocking-top-content-of-the-page **/
+.paddingFromNavbar {
+  padding-top: 65px;
+}
+
+@media (min-width: 979px) {
+  .paddingFromNavbar {
+    padding-top: 15px;
+  }
+}
+
+body{
+  font-family: 'Open Sans', sans-serif;
+
+}

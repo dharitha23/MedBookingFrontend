@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MedBooking</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../../assets/bootstrap-4.2.1-dist/css/bootstrap.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="../../assets/css/main.css">
+</head>
+<body>
+
+<!-- navbar -->
+<app-default-nav [navbar_solid_class]='navbar_solid' *ngIf="!isloggedIn else loginNavBar"></app-default-nav>
+<ng-template #loginNavBar>
+  <app-navbar *ngIf="userType === 'patient'"></app-navbar>
+</ng-template>
+
+<section #mainSection class="paddingFromNavbar">
+  <div class="container">
+    <div class="doctor_result_page">
+      <div
+           class="row col-sm-12 col-md-8 col-lg-8 col-xl-8 offset-md-2 offset-lg-2 offset-xl-2 text-center">
+        <div *ngIf="!finishedDataRetrieval" class="looking-for-results" style="width: 100%">
+          <!-- https://mdbootstrap.com/docs/angular/components/loaders/ -->
+          <div class="spinner-border text-success" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <br>
+          <h5> Retrieving information...</h5>
+        </div>
+
+      </div>
+      <div class="row" *ngIf="finishedDataRetrieval">
+        <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8 offset-md-2 offset-lg-2 offset-xl-2">
+          <div class="row padding-left-15">
+            <div id="doctor_result_profile_pic"
+                 class="doctor_result_profile_pic col-sm-12 col-md-4 col-lg-3 col-xl-3"
+                 [ngStyle]="setDoctorProfilePicture(doctor.profile_pic_path)">
+            </div>
+            <div class="col-sm-12 col-md-8 col-lg-9 col-xl-9">
+              <h2>Dr. <span class="capitalize">{{doctor.firstName}} {{doctor.lastName}}</span></h2>
+              <span class="speciality capitalize">{{doctor.speciality}}</span>
+              <span class="address">
+                    <a href="https://www.google.com/maps/search/?api=1&query={{doctor.latitude}},{{doctor.longitude}}">
+                    {{doctor.address}}
+                    </a>
+                  </span>
+              <div class="rating">
+                <!-- Code taken originally from https://ng-bootstrap.github.io/#/components/rating/examples -->
+                <ngb-rating [(rate)]="doctor.stars_avg" [readonly]="true" max="5" *ngIf="doctor.total_ratings>0">
+                  <ng-template let-fill="fill" let-index="index">
+                    <span class="star" [class.filled]="fill === 100">&#9733;</span>
+                  </ng-template>
+                </ngb-rating>
+                <span> {{doctor.total_ratings}} reviews</span>
+                <div class="buttons">
+                  <button class="btn btn-primary btn-primary-customized-dark-blue" type="button"
+                          routerLink="/confirmappointment">Book appointment
+                  </button>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="reviews col-sm-12 col-md-12 col-lg-12 col-xl-12">
+              <h5><span class="bold-600"> Dr. <span
+                class="capitalize">{{doctor.firstName}} {{doctor.lastName}}</span></span> ratings</h5>
+              <div *ngIf="doctor.rating_reviews.length==0">
+                <br>
+                <br>
+                <h6>There are no reviews for now.</h6>
+              </div>
+              <div class="user_review" *ngFor="let review of doctor.rating_reviews">
+                <p class="rating">
+                  <span class="bold-600">Rated:</span>
+                  <ngb-rating [(rate)]="review.stars" [readonly]="true" max="5">
+                    <ng-template let-fill="fill" let-index="index">
+                      <span class="star" [class.filled]="fill === 100">&#9733;</span>
+                    </ng-template>
+                  </ngb-rating>
+                </p>
+                <p class="comment">
+                  {{review.message}}
+                </p>
+                <span class="author">- {{review.patient_firstname}} {{review.patient_lastname}}</span><br>
+                <span class="date">{{review.rating_date}}</span><br>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+  </div>
+</section>
+
+<app-footer></app-footer>
+
+
+<script src='assets/js/jquery.min.js'></script>
+<script src="assets/bootstrap-4.2.1-dist/js/bootstrap.js"></script>
+<script src='assets/js/main.js'></script>
+
+</body>
+</html>
+

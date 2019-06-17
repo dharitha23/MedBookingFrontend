@@ -1,0 +1,233 @@
+.sign-in input[type=text],
+.sign-in input[type=password],
+.sign-in input[type=email],
+.sign-up input[type=text],
+.sign-up input[type=password],
+.sign-up input[type=email],
+.search input[type=text],
+.search select {
+  width: 80%;
+  margin-bottom: 10px;
+  border: solid 1px gray;
+  border-radius: 3px;
+  padding: 0.375rem 0.75rem;
+  color: #104685;
+}
+
+/** Snippet taken from https://stackoverflow.com/questions/15314407/how-to-add-button-inside-input **/
+.search input[type=text]#address {
+  padding-right: 50px;
+}
+
+.search button#detect {
+  margin-left: -50px;
+  color: #104685;
+  background: none;
+  border: none;
+}
+
+/******************************************************************************************/
+.search button#search_text_btn span{
+  display: none;
+}
+
+.results_for{
+  margin-top:30px;
+}
+
+.search_result {
+  margin: 30px 10px 0 10px;
+  background-color: #EEEEEE;
+  padding: 25px;
+}
+
+a.doctor_name{
+  color: black;
+  font-weight: 600;
+}
+
+/******************************************************************************************************/
+
+@media (min-width: 300px) and (max-width: 767px) {
+  .search input[type=text] {
+    width: 98%;
+  }
+
+  .search select {
+    width: 98%;
+  }
+
+  .search button#search_text_btn {
+    width: 98%;
+  }
+
+  .search button#search_text_btn span {
+    display: block;
+    font-size: 20px;
+  }
+
+  .search button#search_text_btn i {
+    display: none;
+  }
+}
+
+@media (min-width: 768px)  {
+  .search input[type=text],select {
+    max-width: 30%;
+  }
+
+}
+
+
+
+.sign-in button, .sign-up button {
+  width: 80%;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 300px) and (max-width: 767px) {
+  .signup-signin {
+    max-height: fit-content;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+/* Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) and (max-width: 991px) {
+  .signup-signin {
+    max-height: fit-content;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .signup-signin {
+    max-height: fit-content;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+
+  .signup-signin {
+    max-height: fit-content;
+  }
+}
+/***** DOCTOR RESULT PAGE *****/
+
+.doctor_result_page {
+  color: #000;
+  text-align: left;
+}
+
+.doctor_result_page img.profile_pic {
+  width: 100%;
+}
+
+.rating {
+  margin-top: 5px;
+}
+
+.rating.filled {
+  color: orange;
+}
+
+.doctor_result_page a {
+  color: #00B4FF;
+}
+
+@media (min-width: 300px) and (max-width: 767px) {
+  /** Took some guide from https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_background-size **/
+  .doctor_result_profile_pic {
+    background-image: url('../../assets/images/default-user.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 300px;
+    margin-bottom: 20px;
+  }
+}
+
+/* Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+  /** Took some guide from https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_background-size **/
+  .doctor_result_profile_pic {
+    background-image: url('../../assets/images/default-user.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  /**Based on https://stackoverflow.com/questions/396145/how-to-vertically-center-a-div-for-all-browsers **/
+  .center-vertically {
+    position: relative;
+    top: 40%;
+    transform: translateY(-50%);
+  }
+
+}
+
+
+.doctor_result_page .buttons, .search_result .buttons{
+  margin-top: 10px;
+}
+
+.search_result .buttons button{
+  margin-bottom: 10px;
+}
+
+.doctor_result_page a:hover {
+  color: #004763;
+}
+
+.speciality{
+  width:80%;
+  border-right: solid 2px #8dc00c;
+  padding-right: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-weight: 600;
+}
+.search_page{
+  margin-top: 8%;
+  padding-right: 10px;
+  margin-right: 10px;
+  font-weight: 600;
+}
+
+.bold_600 {
+  font-weight: 600;
+}
+
+.reviews {
+  margin-top: 30px;
+}
+
+.user_review {
+  background-color: #EEEEEE;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.page-footer{
+  background: rgb(16, 70, 133);
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  margin-bottom: 0px;
+}
+
+.row{
+  margin-bottom: 10px;
+}
+
+.btn.btn-success.btn-primary-customized-light-green.btn-md{
+
+  margin-left: 5px;
+}
+
+.material-icons{
+  padding: -3px -2px -4px -3px;
+}

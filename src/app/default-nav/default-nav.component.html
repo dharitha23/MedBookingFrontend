@@ -1,0 +1,22 @@
+<head>
+  <link rel="stylesheet" type="text/css" href="../../assets/css/main.css">
+</head>
+<!--Navbar--> <!--https://mdbootstrap.com/docs/angular/navigation/navbar/-->
+<mdb-navbar  SideClass="navbar navbar-default navbar-expand-lg fixed-top scrolling-navbar navbar-dark darken-3 {{navbar_solid_class}}">
+  <mdb-navbar-brand>
+    <a class="navbar-brand" routerLink="">
+      <img src="../../assets/images/medbooking-white-horizontal.png" height="40" class="d-inline-block fa-align-center"
+           alt=""/>
+    </a>
+  </mdb-navbar-brand>
+  <links>
+    <!-- Tabs -->
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" data-value="signupin" routerLink="/signupin">Sign up/Sign in</a></li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" data-value="search" routerLink="/search">Search a doctor</a>
+      </li>
+    </ul>
+  </links>
+</mdb-navbar>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<head>
+  <title>Doctor Homepage</title>
+</head>
+<!--Navbar--> <!--https://mdbootstrap.com/docs/angular/navigation/navbar/-->
+<mdb-navbar SideClass="navbar navbar-expand-lg fixed-top scrolling-navbar navbar-dark  darken-3 navbar_solid"
+            style="background-color: rgb(16, 70, 133)!important;">
+
+  <mdb-navbar-brand><a class="navbar-brand" routerLink=""> <img
+    src="../../assets/images/medbooking-white-horizontal.png" height="40" class="d-inline-block fa-align-center"
+    alt="logo"/>
+  </a></mdb-navbar-brand>
+
+  <links>
+    <!-- Tabs -->
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" routerLinkActive="active"> <!-- For showing active screen-->
+        <a class="nav-link waves-light" mdbRippleRadius routerLink="/docmyappointments"><strong>My Appointments</strong><span
+          class="sr-only">(current)</span></a>
+      </li>
+      <!--<li class="nav-item" routerLinkActive="active">
+        <a class="nav-link waves-light" mdbRippleRadius routerLink="/mydocumentsDoc"><strong>My Documents</strong></a>
+      </li> -->
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link waves-light" mdbRippleRadius routerLink="/myreviews"><strong>My Reviews</strong></a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link waves-light" mdbRippleRadius routerLink="/mypatients"><strong>My Patients</strong></a>
+      </li>
+    </ul>
+    <!-- Notification bell -->
+    <ul class="navbar-nav ml-auto">
+      <!--<li class="nav-item mt-2 mr-1">
+        <div *ngFor="let n of notifications">
+        <div [mdbPopover]="n.firstName"
+                placement="bottom"
+                mdbPopoverHeader="Recent Notifications"
+                triggers="click" mdbRippleRadius> <i class="fas fa-bell fa-2x" (click)="showNotifications()" style="color: white"> </i>
+        </div>
+      </li> -->
+      <li class="nav-item dropdown" dropdown (click)="showNotifications()">
+        <a dropdownToggle type="button" class="nav-link dropdown-toggle waves-effect no-caret" mdbRippleRadius>
+          <i class="fas fa-bell fa-2x"> <span class="fas fa-circle" *ngIf="notifications.length > 0"></span></i>
+        </a>
+        <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary " role="menu">
+          <div class="dropdown-item" *ngIf="notifications.length === 0"> Hi! You don't have notifications for now.</div>
+            <div *ngFor="let n of notifications; let i = index">
+            <a *ngIf="i<10" class="dropdown-item waves-light" mdbRippleRadius routerLink="/docmyappointments">
+              <span>You have an appointment with <span class="capitalize"
+                                                       style="font-weight: 600">{{n.firstName}}</span>
+                <span class="capitalize" style="font-weight: 600"> {{n.lastName}}</span>
+                <br>on <span style="font-weight: 600">{{n.appt_Date}}</span> </span>
+              <div class="divider dropdown-divider"></div>
+            </a>
+          </div>
+
+        </div>
+      </li>
+      <!--Profile-->
+      <li class="nav-item dropdown" dropdown>
+        <a dropdownToggle type="button" class="nav-link dropdown-toggle waves-effect" mdbRippleRadius>
+          <i class="fas fa-user fa-2x"></i>
+        </a>
+        <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+          <a class="dropdown-item waves-light" mdbRippleRadius routerLink="/docprofile">My Profile</a>
+          <!-- <div class="divider dropdown-divider"></div>
+          <a class="dropdown-item waves-light" mdbRippleRadius routerLink="/availability">Availability</a>
+          <div class="divider dropdown-divider"></div> -->
+          <a class="dropdown-item waves-light" mdbRippleRadius routerLink="/signupin">Logout</a>
+        </div>
+      </li>
+    </ul>
+  </links>
+
+</mdb-navbar>
+
+
+
+
